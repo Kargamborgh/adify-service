@@ -9,6 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{secrets.MICROSERVICES_SECRET}}
+
       - name: Slow tests
         run: mvn test -DskipTests=false -Dgroups=slow
 
