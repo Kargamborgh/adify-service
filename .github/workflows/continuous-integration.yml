@@ -12,14 +12,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          token: ${{secrets.[MICROSERVICES_SECRET]}}
+          token: ${{secrets.MICROSERVICES_SECRET}}
 
       - name: Compile
         run: mvn install
 
       - name: Test
 	run: mvn test -DskipTests=false -Dgroups=fast
-
-      - name: Merge to master
-	run: git checkout ${GITHUB_REF#refs/heads/} && git rebase origin/master && git branch master && git push origin master:master && git push origin :${GITHUB_REF#refs/heads/}
-
