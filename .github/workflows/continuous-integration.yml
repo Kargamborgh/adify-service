@@ -18,4 +18,4 @@ jobs:
         run: mvn install
 
       - name: Test
-	run: mvn test -DskipTests=false -Dgroups=fast
+        run: mvn test -DskipTests=false -Dgroups=fast
