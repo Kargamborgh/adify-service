@@ -25,4 +25,12 @@ class AdifyServiceTest {
     assertEquals("fixme", spy.event);
   }
 
+  @Test
+  @Tag("slow")
+  void bar() {
+    SenderSpy spy = new SenderSpy();
+    AdifyService a = new AdifyService(new Adify(new HerokuGetRequest("adify")), "SESSION_ID,advert,PRODUCT_ID,PRODUCT_NAME", spy);
+    a.execute();
+    assertEquals("display", spy.event);
+
 }
